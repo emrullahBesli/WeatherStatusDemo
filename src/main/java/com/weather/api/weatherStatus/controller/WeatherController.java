@@ -25,31 +25,27 @@ public class WeatherController {
 
     @Cacheable(value = "getWeather", key = "#city")
     @PostMapping()
-    public WeatherDto getWeather(@RequestBody RequestCity city) throws InterruptedException {
-        Thread.sleep(5000);
+    public WeatherDto getWeather(@RequestBody RequestCity city) {
         return weatherService.getWeatherStatusByCity(city);
     }
 
     @PostMapping("/forecast")
     @Cacheable(value = "forecast", key = "#city")
-    public List<WeatherDto> getForecast(@RequestBody RequestCity city) throws InterruptedException {
-        Thread.sleep(5000);
+    public List<WeatherDto> getForecast(@RequestBody RequestCity city)  {
         return weatherService.getWeatherForecast(city);
 
     }
 
     @PostMapping("/forecastDaily")
     @Cacheable(value = "forecastDaily", key = "#city")
-    public List<WeatherDto> getForecastDaily(@RequestBody RequestCity city) throws InterruptedException {
-        Thread.sleep(5000);
+    public List<WeatherDto> getForecastDaily(@RequestBody RequestCity city)  {
         return weatherService.getWeatherForecastDaily(city);
 
     }
 
     @GetMapping()
     @Cacheable(value = "getWeatherIstanbul")
-    public WeatherDto getDefaultWeather() throws InterruptedException {
-        Thread.sleep(5000);
+    public WeatherDto getDefaultWeather()  {
         return weatherService.getDefaultWeather();
     }
 

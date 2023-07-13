@@ -8,13 +8,11 @@ import com.weather.api.weatherStatus.exception.CityCouldNotNullException;
 import com.weather.api.weatherStatus.exception.CityNotFoundException;
 import com.weather.api.weatherStatus.model.UserRequest;
 import com.weather.api.weatherStatus.repository.RequestRepository;
-
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -25,12 +23,11 @@ import java.util.List;
 
 @Service
 public class WeatherService {
-    @Value("${apiKey.book.key}")
-    private String API_KEY;
     private static final String weatherUrl = "http://api.openweathermap.org/data/2.5/weather";
     private static final String weatherUrlForecast = "http://api.openweathermap.org/data/2.5/forecast?q=";
-
     private final RequestRepository requestRepository;
+    @Value("${apiKey.book.key}")
+    private String API_KEY;
 
     public WeatherService(RequestRepository requestRepository) {
         this.requestRepository = requestRepository;
@@ -68,7 +65,6 @@ public class WeatherService {
 
 
             double temperature = jsonNode.get("main").get("temp").asDouble();
-
 
 
             long timestamp = jsonNode.get("dt").asLong();
@@ -115,7 +111,6 @@ public class WeatherService {
 
 
             double temperature = jsonNode.get("main").get("temp").asDouble();
-
 
 
             long timestamp = jsonNode.get("dt").asLong();
