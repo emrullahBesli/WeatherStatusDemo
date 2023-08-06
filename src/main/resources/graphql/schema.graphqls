@@ -1,0 +1,20 @@
+type Query{
+    getDefaultWeather: WeatherDto
+    hello:String
+}
+type Mutation{
+    getWeather(requestCity:RequestCity!):WeatherDto
+    getForecast(requestCity:RequestCity!):[WeatherDto]
+    getForecastDaily(requestCity:RequestCity!):[WeatherDto]
+}
+type WeatherDto{
+    city: String
+    country: String
+    temperature: Float
+    date: String
+    weatherDescription: String
+}
+
+input RequestCity{
+    city: String
+}
